@@ -6,13 +6,16 @@ const taskRoutes = require("./src/routes/tasks");
 
 const app = express();
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // ==================== MIDDLEWARE ====================
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+    ],
   })
 );
 
@@ -41,6 +44,6 @@ app.use((req, res) => {
 
 // ==================== START SERVER ====================
 
-app.listen(PORT, () => {
-  console.log(`TaskFlow backend running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`TaskFlow backend running on port ${PORT}`);
 });

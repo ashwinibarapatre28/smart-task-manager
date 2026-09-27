@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: smart-task-manager-api
+    runtime: node
+    rootDir: backend
+    region: oregon
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+
+  - type: web
+    name: smart-task-manager-frontend
+    runtime: node
+    rootDir: frontend
+    region: oregon
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: smart-task-manager-api
+          envVarKey: RENDER_EXTERNAL_URL

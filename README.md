@@ -137,6 +137,14 @@ The application provides dedicated views for:
 
 ---
 
+## Deploy on Render
+
+The root `render.yaml` deploys the frontend and API as two free web services. In Render, create a new Blueprint from this repository and apply the `render.yaml` configuration. The frontend receives the API's public URL automatically.
+
+Both services use free instances, which may sleep when idle and take a short time to wake. The backend stores users and tasks in memory, so data is temporary and can reset whenever the service restarts or redeploys.
+
+---
+
 ## System Architecture
 
 ```text
